@@ -5,6 +5,11 @@ document.getElementById("generateButton").addEventListener('click', function() {
     var email = document.getElementById('email').value;
     var goal = document.getElementById('goal').value;
 
+    if (!validateEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
     var myText = "<html>\n<head>\n<title>Welcome</title>\n</head>\n<body>\n";
     myText += "<h3>Name: " + name + "</h3>";
     myText += "<h3>Email: " + email + "</h3>";
@@ -52,3 +57,8 @@ document.getElementById("printButton").addEventListener('click', function() {
         alert("Please generate the output first.");
     }
 });
+
+function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
